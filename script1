@@ -4,10 +4,8 @@
 KEY_NAME="bcitkey"
 PUB_KEY_PATH="$HOME/.ssh/${KEY_NAME}.pub"
 
-
 aws ec2 import-key-pair --key-name "$KEY_NAME"  --public-key-material fileb://"$PUB_KEY_PATH"
 
 
-aws ec2 describe-key-pairs --key-names "$KEY_NAME"
 
 
