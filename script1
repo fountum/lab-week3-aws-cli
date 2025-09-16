@@ -1,0 +1,12 @@
+#!/bin/bash
+
+KEY_NAME="bctikey"
+PUB_KEY_PATH="$HOME/bctikey.pub"
+
+
+aws ec2 import-key-pair --key-name "$KEY_NAME"  --public-key-material fileb://"$PUB_KEY_PATH"
+
+
+aws ec2 describe-key-pairs --key-names "$KEY_NAME"
+
+
