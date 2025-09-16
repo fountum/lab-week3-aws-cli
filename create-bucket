@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# Reference
+# Script 2:
+# https://docs.aws.amazon.com/cli/latest/reference/s3api/create-bucket.html
+
     set -euo pipefail
 
 # Check if the number of command-line arguments is correct
@@ -16,6 +20,6 @@ if aws s3api head-bucket --bucket "$bucket_name" 2>/dev/null; then
     echo "Bucket $bucket_name already exists."
 else
   # change the line below
-  echo $bucket_name
+  aws s3api create-bucket --bucket $1 --region us-west-2 --create-bucket-configuration LocationConstraint=us-west-2
 fi
 
