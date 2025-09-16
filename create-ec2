@@ -33,6 +33,7 @@ instance_id=$(aws ec2 run-instances \
     --instance-type t2.micro \
     --subnet-id $subnet_id \
     --security-group-ids $security_group_id \
+    --associate-public-ip-address
     --key-name $key_name \
     --query "Instances[0].InstanceId" \
     --output text)
@@ -48,6 +49,6 @@ public_ip=$(aws ec2 describe-instances \
     --output text)
 
 # Write instance data to a file
-echo $(aws ec2 describe-instances --instance-ids ${instance_id} --output json) > instance_data
+echo "public IP: ${public_ip}" > instance_data
 
 echo "Public IP: $public_ip" 
