@@ -33,7 +33,7 @@ instance_id=$(aws ec2 run-instances \
     --instance-type t2.micro \
     --subnet-id $subnet_id \
     --security-group-ids $security_group_id \
-    --associate-public-ip-address
+    --associate-public-ip-address \
     --key-name $key_name \
     --query "Instances[0].InstanceId" \
     --output text)
